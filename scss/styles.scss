@@ -1,0 +1,22 @@
+@import "bootstrap/scss/bootstrap";
+
+// merge with existing $theme-colors map
+$theme-colors: map-merge($theme-colors, (
+  "primary": #ee7571,
+));
+
+$color-mode-type: data;
+
+@include color-mode(dark) {
+  .element {
+    color: #bd3e3e;
+    background-color: #ee7571;
+  }
+}
+
+$dark: rgb(44, 44, 44);
+$text-primary: #fff;
+$color: rgb(37, 129, 220);
+
+// set changes
+@import "bootstrap";
