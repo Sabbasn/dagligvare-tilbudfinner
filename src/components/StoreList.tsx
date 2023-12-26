@@ -31,8 +31,12 @@ export default function StoreList() {
             .map((store) => (
               <li
                 key={store.name}
-                style={{ cursor: "pointer", width: "15rem" }}
-                className="list-group-item card text-center"
+                style={{
+                  cursor: "pointer",
+                  width: "15rem",
+                  borderRadius: "0.6rem",
+                }}
+                className="list-group-item card text-center p-3"
                 onClick={() => navigate(`store/${store.name}`)}
               >
                 <img src={store.imageAddress} className="card-img-top" />
