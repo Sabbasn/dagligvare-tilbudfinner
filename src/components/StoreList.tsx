@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./StoreList.css";
 import { useNavigate } from "react-router-dom";
 import { StoreService } from "../services/StoreService";
@@ -16,6 +16,7 @@ export default function StoreList() {
           <span className="input-group-text bi-search"></span>
           <input
             type="text"
+            name="store-search"
             className="form-control"
             placeholder="Finn din butikk.."
             onChange={(e) => setSearchStore(e.target.value)}
