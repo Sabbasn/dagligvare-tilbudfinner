@@ -8,11 +8,17 @@ export default function StoreList() {
   const [selectedProduct, setSelectedProduct] = useState<any>("");
   const [products, setProducts] = useState<any[]>([]);
   const [stores, setStores] = useState<{ [x: string]: string }[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  var isLoading: boolean = false;
 
   const getAllProducts = async () => {
+    setLoading(true);
+    setProducts([]);
     const prods = await StoreService.getProducts(searchProduct);
     prods["data"] = prods["data"].filter((prod: any) => prod["ean"]);
     setProducts(prods["data"]);
+    setLoading(false);
   };
 
   const getSpecificProduct = async (ean: string) => {
@@ -45,27 +51,35 @@ export default function StoreList() {
             type="text"
             name="store-search"
             className="form-control"
-            placeholder="Finn din vare.."
+            placeholder="Finn din vare..."
             onChange={(e) => setSearchProduct(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === "Enter" && !loading) {
                 getAllProducts();
               }
             }}
           />
-          <button className="btn btn-primary" onClick={getAllProducts}>
+          <button
+            className="btn btn-primary"
+            style={{ color: "white" }}
+            onClick={getAllProducts}
+            disabled={loading}
+          >
             Hent
           </button>
         </div>
+        {loading && <h1>Laster inn varer...</h1>}
         <ul className="d-flex flex-row flex-wrap gap-3">
           {products.map((product) => (
             <li
               onClick={async () => {
+                isLoading = true;
                 setSelectedProduct(product);
                 setStores([]);
                 if (product["ean"])
                   setStores(await getSpecificProduct(product["ean"]));
                 else console.warn("No EAN on product");
+                isLoading = false;
               }}
               key={product["id"]}
               style={{

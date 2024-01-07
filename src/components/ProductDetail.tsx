@@ -32,6 +32,7 @@ export default function ProductDetail(props: Props) {
       <div className="card-body">
         <h3 className="card-title">{props.name}</h3>
         <ul className="list-group">
+          {props.stores.length === 0 && <h1>Laster...</h1>}
           {props.stores
             .sort((a, b) => Number(a["price"]) - Number(b["price"]))
             .map(
@@ -41,8 +42,8 @@ export default function ProductDetail(props: Props) {
                     key={store["name"]}
                     className="list-group-item d-flex justify-content-between"
                   >
-                    <h2>{store["name"]}</h2>
-                    <h2>{store["price"]} kr</h2>
+                    <h3>{store["name"]}</h3>
+                    <h3>{store["price"]} kr</h3>
                   </li>
                 )
             )}
