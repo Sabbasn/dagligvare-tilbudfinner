@@ -73,9 +73,19 @@ export default function StoreList() {
                 width: "15rem",
                 borderRadius: "0.6rem",
               }}
-              className="list-group-item card text-center p-3"
+              className="list-group-item card text-center p-3 d-flex align-content-evenly"
             >
-              <img src={product["image"]} className="card-img-top" />
+              <img
+                src={product["image"]}
+                className="card-img-top"
+                style={{
+                  width: "auto",
+                  height: "auto",
+                  maxWidth: "150px",
+                  maxHeight: "150px",
+                  margin: "0 auto",
+                }}
+              />
               <div className="card-body">
                 <h3 className="card-title">{product["name"]}</h3>
                 <h4 className="card-text">{product["current_price"]} kr</h4>

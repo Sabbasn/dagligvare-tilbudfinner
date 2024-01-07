@@ -41,8 +41,8 @@ export default function ProductDetail(props: Props) {
                     key={store["name"]}
                     className="list-group-item d-flex justify-content-between"
                   >
-                    <h1>{store["name"]}</h1>
-                    <h1>{store["price"]} kr</h1>
+                    <h2>{store["name"]}</h2>
+                    <h2>{store["price"]} kr</h2>
                   </li>
                 )
             )}
