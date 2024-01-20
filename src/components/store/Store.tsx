@@ -15,7 +15,10 @@ export default function Store() {
   const getAllProducts = async () => {
     setLoading(true);
     setProducts([]);
-    const prods = await useGetProducts(searchProduct);
+    const prods = await useGetProducts(searchProduct).catch(() => {
+      alert("En feil oppstod under søket ditt.");
+      setLoading(false);
+    });
     prods["data"] = prods["data"].filter((prod: any) => prod["ean"]);
     setProducts(prods["data"]);
     setLoading(false);
