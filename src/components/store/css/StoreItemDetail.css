@@ -3,6 +3,10 @@
   overflow-y: none;
 }
 
+.btn-close {
+  z-index: 1;
+}
+
 @media (max-width: 400px) {
   .store-item-detail {
     max-height: 500px;
