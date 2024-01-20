@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./css/StoreItemDetail.css";
 
 interface Props {
   name: string;
@@ -26,7 +27,7 @@ export default function StoreItemDetail(props: Props) {
         height: "auto",
         maxWidth: "450px",
       }}
-      className="card m-3 p-2"
+      className="card m-3 p-2 store-item-detail"
     >
       <button
         className="btn btn-close"
@@ -51,10 +52,7 @@ export default function StoreItemDetail(props: Props) {
       />
       <div className="card-body">
         <h3 className="card-title">{props.name}</h3>
-        <ul
-          className="list-group"
-          style={{ maxHeight: "300px", overflowY: "scroll" }}
-        >
+        <ul className="list-group">
           {props.stores.length === 0 && <h1>Laster...</h1>}
           {props.stores
             .sort((a, b) => Number(a["price"]) - Number(b["price"]))
