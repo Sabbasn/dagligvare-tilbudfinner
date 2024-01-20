@@ -6,12 +6,6 @@ interface Props {
 }
 
 export function StoreInput(props: Props) {
-  function handleKeyPress(e: KeyboardEvent) {
-    if (e.key === "Enter") {
-      props.onKeyDown;
-    }
-  }
-
   return (
     <input
       type="text"
@@ -19,7 +13,7 @@ export function StoreInput(props: Props) {
       className="form-control"
       placeholder="Finn din vare..."
       onChange={(e) => props.setSearchProduct(e.target.value)}
-      onKeyDown={() => handleKeyPress}
+      onKeyDown={(e) => props.onKeyDown(e)}
     />
   );
 }

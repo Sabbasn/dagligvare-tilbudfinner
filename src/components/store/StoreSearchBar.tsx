@@ -8,11 +8,18 @@ interface Props {
 }
 
 export function StoreSearchBar(props: Props) {
+  const handleKeyDown = (e: any) => {
+    console.log(e.key);
+    if (e.key === "Enter") {
+      props.onKeyDown(e);
+    }
+  };
+
   return (
     <div className="input-group mb-3">
       <span className="input-group-text bi-search"></span>
       <StoreInput
-        onKeyDown={props.onKeyDown}
+        onKeyDown={(e) => handleKeyDown(e)}
         setSearchProduct={props.setSearchProduct}
       />
       <StoreButton disabled={props.disabled} onClick={props.onKeyDown} />
