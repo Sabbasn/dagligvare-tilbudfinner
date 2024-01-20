@@ -1,6 +1,6 @@
 export async function useGetProducts(search: string) {
 	search = search.replace(" ", "_")
-	const queryParams = `?search=${search}&size=30&unique=1&exclude_no_ean=1`
+	const queryParams = `?search=${search}&size=30&unique&exclude_without_ean`
 	const getUrl = "https://kassal.app/api/v1/products".concat(queryParams);
 	const apiKey = import.meta.env.VITE_KASSALAPP_API_KEY;
 	const headers = { Authorization: "Bearer " + apiKey, search: search };
@@ -32,9 +32,7 @@ export const useGetSpecificProduct = async (ean: string) => {
 					price: storePrice,
 				});
 			}
-		} catch (error) {
-			console.warn("Name is null");
-		}
+		} catch (error) { }
 	});
 	return stores;
 };
