@@ -1,7 +1,7 @@
 export async function useGetProducts(search: string) {
-	const queryParams = `?search=${search}&size=30&unique&exclude_no_ean`
+	search = search.replace(" ", "_")
+	const queryParams = `?search=${search}&size=30&unique=1&exclude_no_ean=1`
 	const getUrl = "https://kassal.app/api/v1/products".concat(queryParams);
-	console.log(getUrl)
 	const apiKey = import.meta.env.VITE_KASSALAPP_API_KEY;
 	const headers = { Authorization: "Bearer " + apiKey, search: search };
 	let productsData = await fetch(getUrl, {headers})

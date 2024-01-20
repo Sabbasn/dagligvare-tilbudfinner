@@ -33,14 +33,16 @@ export default function Store() {
         className="d-flex flex-row flex-wrap gap-2 justify-content-center"
         style={{ paddingLeft: "0" }}
       >
-        {products.map((product) => (
-          <StoreItem
-            product={product}
-            setSelectedProduct={setSelectedProduct}
-            setStores={setStores}
-            key={product["id"]}
-          />
-        ))}
+        {products
+          .filter((p, i, a) => a.findIndex((t) => t["ean"] === p["ean"]) === i)
+          .map((product) => (
+            <StoreItem
+              product={product}
+              setSelectedProduct={setSelectedProduct}
+              setStores={setStores}
+              key={product["id"]}
+            />
+          ))}
       </ul>
       {selectedProduct && (
         <StoreItemDetail
