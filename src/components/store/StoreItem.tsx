@@ -35,7 +35,7 @@ export default function StoreItem(props: StoreItemProps) {
         src={props.product["image"]}
         className="card-img-top"
         style={{
-          objectFit: "cover",
+          objectFit: "contain",
           width: "100%",
           height: "300px",
         }}
