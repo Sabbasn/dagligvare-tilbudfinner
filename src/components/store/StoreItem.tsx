@@ -40,7 +40,7 @@ export default function StoreItem(props: StoreItemProps) {
           height: "300px",
         }}
       />
-      <div className="card-body store-item-body">
+      <div className="store-item-body card-body">
         <p className="card-title">{props.product["name"]}</p>
         <h4 className="card-text">{props.product["current_price"]} kr</h4>
       </div>

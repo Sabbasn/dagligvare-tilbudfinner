@@ -1,5 +1,8 @@
-.store-item-body:hover {
+.store-item:hover > .store-item-body {
+  background-color: var(--bs-primary);
+}
+
+.store-item-body {
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
-  background-color: var(--bs-primary);
 }
