@@ -25,7 +25,7 @@ export default function Store() {
     <>
       <StoreSearchBar
         setSearchProduct={setSearchProduct}
-        loading={loading}
+        disabled={loading}
         onKeyDown={getAllProducts}
       />
       <div className="d-flex-col">

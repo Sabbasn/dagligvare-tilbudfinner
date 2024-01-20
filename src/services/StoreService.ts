@@ -15,3 +15,24 @@ export async function useGetProduct(ean: string) {
 	let productsJson = await productsData.json()
 	return productsJson
 }
+
+export const useGetSpecificProduct = async (ean: string) => {
+	const data = await useGetProduct(ean);
+	const prods = data["data"]["products"];
+	var stores: { [x: string]: string }[] = [];
+	prods.map((product: any) => {
+		try {
+			const storeName = product["store"]["name"];
+			const storePrice = product["current_price"]["price"];
+			if (storeName && storePrice) {
+				stores.push({
+					name: storeName,
+					price: storePrice,
+				});
+			}
+		} catch (error) {
+			console.warn("Name is null");
+		}
+	});
+	return stores;
+};

@@ -1,41 +1,22 @@
-import { useGetProduct } from "@services/StoreService";
+import { useGetSpecificProduct } from "@services/StoreService";
 import "./css/StoreItem.css";
 
-export default function StoreItem(props: {
+interface StoreItemProps {
   product: any;
   setSelectedProduct: any;
   setStores: any;
-}) {
-  let isLoading: boolean = false;
+}
 
-  const getSpecificProduct = async (ean: string) => {
-    const data = await useGetProduct(ean);
-    const prods = data["data"]["products"];
-    var stores: { [x: string]: string }[] = [];
-    prods.map((product: any) => {
-      try {
-        const storeName = product["store"]["name"];
-        const storePrice = product["current_price"]["price"];
-        if (storeName && storePrice) {
-          stores.push({
-            name: storeName,
-            price: storePrice,
-          });
-        }
-      } catch (error) {
-        console.warn("Name is null");
-      }
-    });
-    return stores;
-  };
+export default function StoreItem(props: StoreItemProps) {
+  let isLoading: boolean = false;
 
   const handleClick = async () => {
     isLoading = true;
     props.setSelectedProduct(props.product);
     props.setStores([]);
-    if (props.product["ean"])
-      props.setStores(await getSpecificProduct(props.product["ean"]));
-    else console.warn("No EAN on product");
+    if (props.product["ean"]) {
+      props.setStores(await useGetSpecificProduct(props.product["ean"]));
+    } else console.warn("No EAN on product");
     isLoading = false;
   };
 

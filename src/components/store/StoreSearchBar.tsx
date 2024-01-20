@@ -2,7 +2,7 @@ import { StoreButton } from "./StoreButton";
 import { StoreInput } from "./StoreInput";
 
 interface Props {
-  loading: boolean;
+  disabled: boolean;
   onKeyDown: any;
   setSearchProduct: any;
 }
@@ -15,7 +15,7 @@ export function StoreSearchBar(props: Props) {
         onKeyDown={props.onKeyDown}
         setSearchProduct={props.setSearchProduct}
       />
-      <StoreButton disabled={props.loading} onClick={props.onKeyDown} />
+      <StoreButton disabled={props.disabled} onClick={props.onKeyDown} />
     </div>
   );
 }
