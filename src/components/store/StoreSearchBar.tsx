@@ -9,7 +9,6 @@ interface Props {
 
 export function StoreSearchBar(props: Props) {
   const handleKeyDown = (e: any) => {
-    console.log(e.key);
     if (e.key === "Enter") {
       props.onKeyDown(e);
     }
