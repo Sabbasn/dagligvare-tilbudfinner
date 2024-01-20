@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./Store.css";
-import ProductDetail from "./ProductDetail";
+import StoreItemDetail from "./StoreItemDetail";
 import StoreItem from "./StoreItem";
-import { StoreService } from "../services/StoreService";
+import { StoreService } from "../../services/StoreService";
 import { StoreSearchBar } from "./StoreSearchBar";
 
 export default function Store() {
@@ -30,7 +30,7 @@ export default function Store() {
       />
       <div className="d-flex-col">
         {loading && <h1>Laster inn varer...</h1>}
-        <ul className="d-flex flex-row flex-wrap">
+        <ul className="d-flex flex-row gap-2 flex-wrap">
           {products.map((product) => (
             <StoreItem
               product={product}
@@ -42,7 +42,7 @@ export default function Store() {
         </ul>
       </div>
       {selectedProduct && (
-        <ProductDetail
+        <StoreItemDetail
           name={selectedProduct["name"]}
           description={selectedProduct["description"]}
           img={selectedProduct["image"]}

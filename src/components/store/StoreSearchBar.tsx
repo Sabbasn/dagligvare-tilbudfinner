@@ -1,10 +1,9 @@
-import { MouseEventHandler, useState } from "react";
 import { StoreButton } from "./StoreButton";
 import { StoreInput } from "./StoreInput";
 
 interface Props {
   loading: boolean;
-  onKeyDown: MouseEventHandler;
+  onKeyDown: any;
   setSearchProduct: any;
 }
 

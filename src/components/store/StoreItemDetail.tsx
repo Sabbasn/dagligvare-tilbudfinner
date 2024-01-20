@@ -5,7 +5,7 @@ interface Props {
   stores: { [x: string]: string }[];
 }
 
-export default function ProductDetail(props: Props) {
+export default function StoreItemDetail(props: Props) {
   return (
     <div
       style={{

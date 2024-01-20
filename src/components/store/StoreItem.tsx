@@ -1,4 +1,5 @@
-import { StoreService } from "../services/StoreService";
+import { StoreService } from "../../services/StoreService";
+import "./StoreItem.css";
 
 export default function StoreItem(props: {
   product: any;
@@ -39,7 +40,7 @@ export default function StoreItem(props: {
   };
 
   return (
-    <li
+    <div
       onClick={handleClick}
       key={props.product["id"]}
       style={{
@@ -47,23 +48,21 @@ export default function StoreItem(props: {
         width: "15rem",
         borderRadius: "0.6rem",
       }}
-      className="list-group-item card text-center p-3 d-flex align-content-evenly"
+      className="store-item card text-center"
     >
       <img
         src={props.product["image"]}
         className="card-img-top"
         style={{
-          width: "auto",
-          height: "auto",
-          maxWidth: "150px",
-          maxHeight: "150px",
-          margin: "0 auto",
+          objectFit: "cover",
+          width: "100%",
+          height: "300px",
         }}
       />
-      <div className="card-body">
-        <h3 className="card-title">{props.product["name"]}</h3>
+      <div className="card-body store-item-body">
+        <p className="card-title">{props.product["name"]}</p>
         <h4 className="card-text">{props.product["current_price"]} kr</h4>
       </div>
-    </li>
+    </div>
   );
 }
