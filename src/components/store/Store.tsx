@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./Store.css";
+import "./css/Store.css";
 import StoreItemDetail from "./StoreItemDetail";
 import StoreItem from "./StoreItem";
-import { StoreService } from "../../services/StoreService";
 import { StoreSearchBar } from "./StoreSearchBar";
+import { useGetProducts } from "@services/StoreService";
 
 export default function Store() {
   const [searchProduct, setSearchProduct] = useState("");
@@ -15,7 +15,7 @@ export default function Store() {
   const getAllProducts = async () => {
     setLoading(true);
     setProducts([]);
-    const prods = await StoreService.getProducts(searchProduct);
+    const prods = await useGetProducts(searchProduct);
     prods["data"] = prods["data"].filter((prod: any) => prod["ean"]);
     setProducts(prods["data"]);
     setLoading(false);

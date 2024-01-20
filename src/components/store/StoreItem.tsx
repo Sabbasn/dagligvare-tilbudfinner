@@ -1,5 +1,5 @@
-import { StoreService } from "../../services/StoreService";
-import "./StoreItem.css";
+import { useGetProduct } from "@services/StoreService";
+import "./css/StoreItem.css";
 
 export default function StoreItem(props: {
   product: any;
@@ -9,7 +9,7 @@ export default function StoreItem(props: {
   let isLoading: boolean = false;
 
   const getSpecificProduct = async (ean: string) => {
-    const data = await StoreService.getProduct(ean);
+    const data = await useGetProduct(ean);
     const prods = data["data"]["products"];
     var stores: { [x: string]: string }[] = [];
     prods.map((product: any) => {
