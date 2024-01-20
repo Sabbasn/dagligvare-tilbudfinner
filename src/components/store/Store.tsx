@@ -28,19 +28,20 @@ export default function Store() {
         disabled={loading}
         onKeyDown={getAllProducts}
       />
-      <div className="d-flex-col">
-        {loading && <h1>Laster inn varer...</h1>}
-        <ul className="d-flex flex-row gap-2 flex-wrap">
-          {products.map((product) => (
-            <StoreItem
-              product={product}
-              setSelectedProduct={setSelectedProduct}
-              setStores={setStores}
-              key={product["id"]}
-            />
-          ))}
-        </ul>
-      </div>
+      {loading && <h1>Laster inn varer...</h1>}
+      <ul
+        className="d-flex flex-row flex-wrap gap-2 justify-content-center"
+        style={{ paddingLeft: "0" }}
+      >
+        {products.map((product) => (
+          <StoreItem
+            product={product}
+            setSelectedProduct={setSelectedProduct}
+            setStores={setStores}
+            key={product["id"]}
+          />
+        ))}
+      </ul>
       {selectedProduct && (
         <StoreItemDetail
           name={selectedProduct["name"]}
