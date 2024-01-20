@@ -1,14 +1,24 @@
+import { useEffect, useState } from "react";
+
 interface Props {
   name: string;
   description: string;
   img: string;
   stores: { [x: string]: string }[];
+  setIsHidden?: any;
 }
 
 export default function StoreItemDetail(props: Props) {
+  const [isHidden, setIsHidden] = useState(false);
+
+  useEffect(() => {
+    setIsHidden(false);
+  }, [props.name]);
+
   return (
     <div
       style={{
+        display: isHidden ? "none" : "flex",
         position: "fixed",
         right: "0px",
         top: "60px",
@@ -18,6 +28,16 @@ export default function StoreItemDetail(props: Props) {
       }}
       className="card m-3 p-2"
     >
+      <button
+        className="btn btn-close"
+        onClick={() => setIsHidden(true)}
+        style={{
+          position: "fixed",
+          right: "25px",
+          float: "right",
+          width: "32px",
+        }}
+      ></button>
       <img
         src={props.img}
         className="card-img-top p-2"
@@ -31,7 +51,10 @@ export default function StoreItemDetail(props: Props) {
       />
       <div className="card-body">
         <h3 className="card-title">{props.name}</h3>
-        <ul className="list-group">
+        <ul
+          className="list-group"
+          style={{ maxHeight: "300px", overflowY: "scroll" }}
+        >
           {props.stores.length === 0 && <h1>Laster...</h1>}
           {props.stores
             .sort((a, b) => Number(a["price"]) - Number(b["price"]))
