@@ -8,16 +8,12 @@ interface StoreItemProps {
 }
 
 export default function StoreItem(props: StoreItemProps) {
-  let isLoading: boolean = false;
-
   const handleClick = async () => {
-    isLoading = true;
     props.setSelectedProduct(props.product);
     props.setStores([]);
     if (props.product["ean"]) {
       props.setStores(await useGetSpecificProduct(props.product["ean"]));
     } else console.warn("No EAN on product");
-    isLoading = false;
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./css/Store.css";
 import StoreItemDetail from "./StoreItemDetail";
 import StoreItem from "./StoreItem";
@@ -6,7 +6,7 @@ import { StoreSearchBar } from "./StoreSearchBar";
 import { useGetProducts } from "@services/StoreService";
 
 export default function Store() {
-  const [searchProduct, setSearchProduct] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>("");
   const [products, setProducts] = useState<any[]>([]);
   const [stores, setStores] = useState<{ [x: string]: string }[]>([]);
@@ -15,7 +15,7 @@ export default function Store() {
   const getAllProducts = async () => {
     setLoading(true);
     setProducts([]);
-    const prods = await useGetProducts(searchProduct).catch(() => {
+    const prods = await useGetProducts(searchRef.current!.value).catch(() => {
       alert("En feil oppstod under søket ditt.");
       setLoading(false);
     });
@@ -27,7 +27,7 @@ export default function Store() {
   return (
     <>
       <StoreSearchBar
-        setSearchProduct={setSearchProduct}
+        inputRef={searchRef}
         disabled={loading}
         onKeyDown={getAllProducts}
       />
