@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from "react";
 import "./css/Store.css";
 import StoreItemDetail from "./StoreItemDetail";

@@ -20,14 +20,8 @@ export default function StoreItemDetail(props: Props) {
     <div
       style={{
         display: isHidden ? "none" : "flex",
-        position: "fixed",
-        right: "0px",
-        top: "60px",
-        width: "auto",
-        height: "auto",
-        maxWidth: "450px",
       }}
-      className="card m-3 p-2 store-item-detail"
+      className="card p-2 store-item-detail"
     >
       <button
         className="btn btn-close"
@@ -38,10 +32,10 @@ export default function StoreItemDetail(props: Props) {
           float: "right",
           width: "32px",
         }}
-      ></button>
+      />
       <img
         src={props.img}
-        className="card-img-top p-2"
+        className="store-item-detail-img card-img-top p-2"
         style={{
           width: "auto",
           height: "auto",
