@@ -1,8 +1,9 @@
+const apiKey = process.env.NEXT_PUBLIC_KASSALAPP_API_KEY;
+
 export async function useGetProducts(search: string) {
 	search = search.replace(" ", "_")
 	const queryParams = `?search=${search}&size=30&unique&exclude_without_ean`
 	const getUrl = "https://kassal.app/api/v1/products".concat(queryParams);
-	const apiKey = import.meta.env.VITE_KASSALAPP_API_KEY;
 	const headers = { Authorization: "Bearer " + apiKey, search: search };
 	let productsData = await fetch(getUrl, {headers})
 	let productsJson = await productsData.json()
@@ -11,7 +12,6 @@ export async function useGetProducts(search: string) {
 
 export async function useGetProduct(ean: string) {
 	const getUrl = "https://kassal.app/api/v1/products/ean/" + ean;
-	const apiKey = import.meta.env.VITE_KASSALAPP_API_KEY;
 	const headers = { Authorization: "Bearer " + apiKey };
 	let productsData = await fetch(getUrl, {headers})
 	let productsJson = await productsData.json()

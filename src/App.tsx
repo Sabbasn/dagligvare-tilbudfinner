@@ -1,5 +1,8 @@
 import "./App.css";
 import Store from "./components/store/Store";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "scss/styles.scss";
 
 function App() {
   return (
